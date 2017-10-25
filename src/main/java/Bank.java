@@ -9,8 +9,14 @@
  */
 public class Bank {
 
-    public String bankName;
+    /**
+     * name of bank.
+     */
+    private String bankName;
 
+    /**
+     * set name.
+     */
     public Bank() {
         bankName = "Illini Bank";
     }
@@ -29,6 +35,14 @@ public class Bank {
         /*
          * Implement this function
          */
+        double current = bankAccount.getBalance();
+        bankAccount.setBalance(current - amount);
+        //double after = bankAccount.getBalance();
+        if (current >= amount) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -45,6 +59,13 @@ public class Bank {
         /*
          * Implement this function
          */
+        if (bankAccount == null) {
+            return false;
+        } else {
+            double currentBalance = bankAccount.getBalance();
+            bankAccount.setBalance(currentBalance + amount);
+            return true;
+        }
     }
 
     /**
@@ -64,6 +85,18 @@ public class Bank {
         /*
          * Implement this function
          */
+        //double afterA = source.getBalance();
+        //double afterB = destination.getBalance();
+        double currentA = source.getBalance();
+        double currentB = destination.getBalance();
+        if (currentA < amount || source == null || destination == null) {
+            return false;
+        } else {
+
+            source.setBalance(currentA - amount);
+            destination.setBalance(currentB + amount);
+            return true;
+        }
     }
 
     /**
